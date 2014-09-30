@@ -1,0 +1,14 @@
+<fest:template xmlns:fest="http://fest.mail.ru"
+    context_name="json">
+    <div class="logoText">Tanks</div>
+    <p id="titleText">Registration</p>
+        <div class= "menu">
+            <legend>Sign Up</legend>
+            <form method= "POST" action="/sign_up" id="reg">
+                <input type= "text" class="span4" placeholder="email" name="email"/>
+                <input type= "password" class="span4" placeholder="password" name="password"/>
+                <div class="logSubmit"><button type="submit" name="submit" class="btn btn-block btn-primary">Sign Up</button></div>
+            </form>
+        </div>  
+    <a href="#"><button class="btn js-back" type="button"><i class="icon-arrow-left"></i> Back</button></a>
+</fest:template>

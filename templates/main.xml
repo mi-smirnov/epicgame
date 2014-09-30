@@ -1,6 +1,11 @@
-<fest:template xmlns:fest="http://fest.mail.ru"
-    context_name="json">
-    <div>
-        <h1>Epic Game</h1>
+<fest:template xmlns:fest="http://fest.mail.ru" context_name="json"> 
+    <div class="logoText">Tanks</div>
+    <p id="titleText">Main Menu</p>
+    <div class="menu">
+
+        <a href="#login"><button class="btn btn-large blockMenu" type="button">Login</button></a>
+        <a href="#reg"><button class="btn btn-large blockMenu" type="button">Sign Up</button></a>
+        <a href="#game"><button class="btn btn-large blockMenu" type="button">Start Game</button></a>
+        <a href="#scoreboard"><button class="btn btn-large blockMenu" type="button">Score Board</button></a>
     </div>
 </fest:template>

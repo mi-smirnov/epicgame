@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/main.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" rel="stylesheet"/>
+    <script data-main="js/main" src="js/lib/require.js"></script>
+</head><body>
+    <div class = "container">
+        <div id="page"></div>
+
+    <!-- Livereload -->
+    <script src="//localhost:35729/livereload.js"></script>
+    <script>
+        var $page = $('#page'),
+            currentScreen = 'main';
+
+        /* Конструктор экрана "Лучшие игроки" */
+        function showScoreboardScreen() {
+            hideMainScreen(); // Убиваем экран "Главный"
+            currentScreen = 'scoreboard';
+            $page.html(scoreboardTmpl()); // Рендерим шаблон
+            // Инициализируем обработчики событий
+            $page.find('.js-back').on('click', showMainScreen);
+        }
+
+        /* Деструктор экрана "Лучшие игроки" */
+        function hideScoreboardScreen() {
+            // Удаляем установленные обработчики событий
+            $page.find('.js-back').off('click', showMainScreen);
+        }
+
+        /* Конструктор экрана "Игра" */
+        function showGameScreen() {
+            hideMainScreen(); // Убиваем экран "Главный"
+            currentScreen = 'game';
+            $page.html(gameTmpl()); // Рендерим шаблон
+            // Инициализируем обработчики событий
+            $page.find('.js-back').on('click', showMainScreen);
+        }
+
+        /* Деструктор экрана "Игра" */
+        function hideGameScreen() {
+            // Удаляем установленные обработчики событий
+            $page.find('.js-back').off('click', showMainScreen);
+        }
+
+        /* Конструктор экрана "Авторизация" */
+        function showLoginScreen() {
+            hideMainScreen(); // Убиваем экран "Главный"
+            currentScreen = 'login';
+            $page.html(loginTmpl()); // Рендерим шаблон
+            // Инициализируем обработчики событий
+            $page.find('.js-back').on('click', showMainScreen);
+        }
+
+        /* Деструктор экрана "Авторизация" */
+        function hideLoginScreen() {
+            // Удаляем установленные обработчики событий
+            $page.find('.js-back').off('click', showMainScreen);
+        }
+
+        function showRegistrationScreen() {
+            hideMainScreen();
+            currentScreen = 'registration';
+            $page.html(registrationTmpl());
+            $page.find('.js-back').on('click', showMainScreen);
+        }
+
+        function hideRegistrationScreen() {
+            $page.find('js-back').off('click', showMainScreen);
+        }
+
+        /* Конструктор экрана "Главный" */
+        function showMainScreen() {
+             // Убиваем текущий экран
+            if (currentScreen === 'scoreboard') {
+                hideScoreboardScreen();
+            } else if (currentScreen === 'game') {
+                hideGameScreen();
+            } else if (currentScreen === 'login') {
+                hideLoginScreen();
+            } else if (currentScreen === 'registration') {
+                hideRegistrationScreen();
+            }
+            currentScreen = 'main';
+            $page.html(mainTmpl()); // Рендерим шаблон
+            // Инициализируем обработчики событий
+            $page.find('.js-scoreboard').on('click', showScoreboardScreen);
+            $page.find('.js-start-game').on('click', showGameScreen);
+            $page.find('.js-login').on('click', showLoginScreen);
+            $page.find('.js-registration').on('click', showRegistrationScreen);
+        }
+
+        /* Деструктор экрана "Главный" */
+        function hideMainScreen() {
+            // Удаляем установленные обработчики событий
+            $page.find('.js-scoreboard').off('click', showScoreboardScreen);
+            $page.find('.js-start-game').off('click', showGameScreen);
+            $page.find('.js-login').off('click', showLoginScreen);
+            $page.find('.js-registration').off('click', showRegistrationScreen);
+        }
+
+        showMainScreen();
+     </script>
+    </div>
+</body></html>

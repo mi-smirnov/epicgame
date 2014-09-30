@@ -1,6 +1,6 @@
 <fest:template xmlns:fest="http://fest.mail.ru"
     context_name="json">
-    <div>
-        <h1>Epic Game</h1>
-    </div>
+    <div class="logoText">Tanks</div>
+    <p id="titleText">Game</p>
+    <a href="#"><div class= "menuBlock"><button class="btn js-back" type="button"><i class="icon-arrow-left"></i> Back</button></div></a>
 </fest:template>

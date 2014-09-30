@@ -1,6 +1,10 @@
 module.exports = function (grunt) {
     grunt.initConfig({
         shell: { 
+            options: {
+                stdout: true,
+                stderr: true
+            },
             server: { /* Подзадача */
                 command: 'java -cp L1.2-1.0-jar-with-dependencies.jar main.Main 8080'
             /* запуск сервера */
@@ -15,13 +19,13 @@ module.exports = function (grunt) {
         			dest: 'public_html/js/tmpl' /* результирующая директория */
     		    }],
                 options: {
-                    template: function (data) { /* формат функции-шаблона */
+                    template: function (data) {
                         return grunt.template.process(
-                            /* присваиваем функцию-шаблон переменной */
-                            'var <%= name %>Tmpl = <%= contents %> ;',
+                        // 'var <%= name %>Tmpl = <%= contents %> ;',
+                            'define(function () { return <%= contents %> ; });',
                             {data: data}
                         );
-                    }    
+                    }
                 }
             } 
 	    }, /* grunt-fest */
@@ -30,11 +34,15 @@ module.exports = function (grunt) {
                 files: ['templates/*.xml'], /* следим за шаблонами */
                 tasks: ['fest'], /* перекомпилировать */
                 options: {
+                    interrupt: true,
                     atBegin: true /* запустить задачу при старте */
                 }
             },
             server: { /* Подзадача */
-                files: ['public_html/js/**/*.js'], /* следим за JS */
+                files: [
+                'public_html/css/**/*.css',
+                'public_html/js/**/*.js'
+                ], /* следим за JS */
                 options: {
                     livereload: true /* автоматическая перезагрузка */
                 }
