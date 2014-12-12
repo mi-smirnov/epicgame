@@ -1,0 +1,8 @@
+<fest:template xmlns:fest="http://fest.mail.ru"
+               context_name="json">
+    <div class="logo">Tanks</div>
+    <p id="title">Canvas</p>
+    <button class="btn btn-large btn-primary startAnimate">Press me NOW!!!</button>
+    <canvas width="600" height="300" id="canvas">
+    </canvas>
+</fest:template>

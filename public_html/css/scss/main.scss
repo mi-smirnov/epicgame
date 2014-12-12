@@ -1,0 +1,145 @@
+$table_text_size: 20px;
+$text_error_color: red;
+$display_none: none;
+
+@mixin form__input-base {
+    width: 470px;
+    height: 35px !important;
+}
+@mixin form__button-base {
+    width: 484px !important;
+    height: 40px !important;
+}
+@mixin form_text-error {
+    color: red;
+    margin-bottom: 8px;
+}
+
+#page {
+    margin:0 auto;
+    background-color: rgba(205, 205, 193, 0.8);
+    width: 600px;
+    height: 600px;
+    border: 1px;
+    border-style:solid;
+    border-color: rgba(205, 205, 193, 0.8);
+    border-radius: 30px;
+    margin-top: 100px;
+}
+
+body {
+    background: url('../img/1.jpg');
+    background-size: 100% auto;
+}
+
+.logo {
+    font-size: 70px;
+    margin: 70px auto;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0px 1px 1px #ddd,
+        0px 2px 1px #d6d6d6,
+        0px 3px 1px #ccc,
+        0px 4px 1px #c5c5c5,
+        0px 5px 1px #c1c1c1,
+        0px 6px 1px #bbb,
+        0px 7px 1px #777,
+        0px 8px 3px rgba(100, 100, 100, 0.4),
+        0px 9px 5px rgba(100, 100, 100, 0.1),
+        0px 10px 7px rgba(100, 100, 100, 0.15),
+        0px 11px 9px rgba(100, 100, 100, 0.2),
+        0px 12px 11px rgba(100, 100, 100, 0.25),
+        0px 13px 15px rgba(100, 100, 100, 0.3);
+}
+
+.menu {
+    width: 80%;
+    height: 300px;
+    margin: auto;
+    
+}
+.menu__button {
+    width: 100%;
+    margin: 20px auto;
+    height: 70px;
+    
+}
+#title {
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    color: #39f;
+    font-size: 35px;
+}
+.form__div_error-email {
+    @include form_text-error;   
+}
+.form__div_error-password {
+    @include form_text-error;
+}
+.page__button_back {
+    width: 7%;
+    margin-left: 84%;
+    margin-bottom: 10px !important;
+}
+.form__input_login-email {
+    @include form__input-base;
+}
+.form__input_login-password {
+    @include form__input-base;
+}
+.form__input_signup-email {
+    @include form__input-base;
+}
+.form__input_signup-password {
+    @include form__input-base;
+}
+.form__button_submit-login {
+    @include form__button-base;   
+}
+.form__button_submit-signup {
+    @include form__button-base
+}
+
+.menu__alert {
+    display: none;
+    width: 433px;
+}
+
+.form__input_error {
+    border-color: red !important;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px red !important;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px red !important;
+    outline: 0 none !important;
+}
+
+.startAnimate {
+    width: 500px;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+#game__firstTank {
+    display: $display_none;
+}
+#game__secondTank {
+    display: $display_none;
+}
+#game__wall {
+    display: $display_none;
+}
+
+#game__field {
+    margin-left: 45px;
+}
+.table {
+    width: 75% !important;
+    margin-left: 20px;
+}
+.table__td_score{
+    font-size: $table_text_size;
+}
+.table__td_email{
+    font-size: $table_text_size;
+}

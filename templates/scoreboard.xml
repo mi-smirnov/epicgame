@@ -1,6 +1,20 @@
 <fest:template xmlns:fest="http://fest.mail.ru"
-    context_name="json">
-    <div class="logoText">Tanks</div>
-    <p id="titleText">Score Board</p>
-    <a href="#"><div class= "menuBlock"><button class="btn js-back" type="button"><a href="#"><i class="icon-arrow-left"></i> Back</a></button></div></a>
+    context_name="collection">
+    <div class="logo">Tanks</div>
+    <div id="title">Scoreboard</div>
+        <table class="table">
+            <tr>
+                <td class="table__td_email">email</td>
+                <td class="table__td_score">score</td>
+            </tr>
+            <fest:each iterate='collection' index='i' value='scores'>
+                <tr>
+                    <td><fest:value>scores.email</fest:value></td>
+                    <td><fest:value>scores.score</fest:value></td>
+                </tr>
+            </fest:each>
+        </table>
+    <a href="#">
+        <button class="btn page__button_back" type="button"><i class="icon-arrow-left"></i></button>
+    </a>
 </fest:template>

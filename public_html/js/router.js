@@ -1,36 +1,55 @@
 define([
     'backbone',
     'jquery',
-    'views/main',
-    'views/login',
-    'views/game',
-    'views/scoreboard',
-    'views/signup'
-], function (Backbone, mainView, loginView, gameView, signupView, scoreboardView){
+    'views/mainView',
+    'views/loginView',
+    'views/gameView',
+    'views/scoreboardView',
+    'views/signupView',
+    'views/canvasView',
+    'viewManager'
+], function (Backbone, jquery, mainView, loginView, gameView, scoreboardView, signupView, canvasView, viewManager){
+    
+    viewManager.subscribe([mainView, loginView, gameView, scoreboardView, signupView, canvasView]);
 
     var Router = Backbone.Router.extend({
+
         routes: {
+            '' : 'index',
             'scoreboard' : 'scoreboardAction',
             'game' : 'gameAction',
             'login' : 'loginAction',
-            'signup' : 'signupAction', 
-            '*default': 'defaultActions'
+            'signup' : 'signupAction',
+            'canvas' : 'canvasAction',
+            '*default': 'defaultAction'
+        },
+
+        index: function() {
+            mainView.show()
         },
    
-        defaultAction: function () {
-            mainView.show();
+        defaultAction: function() {
+            alert('404');
         },
-        scoreboardAction: function () {
+
+        scoreboardAction: function() {
             scoreboardView.show();
         },
-        gameAction: function () {
+
+        gameAction: function() {
             gameView.show();
         },
-        loginAction: function () {
+
+        loginAction: function() {
             loginView.show();
         },
+        
         signupAction: function() {
             signupView.show();
+        },
+
+        canvasAction: function() {
+            canvasView.show();
         }
     });
 

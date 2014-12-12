@@ -6,7 +6,7 @@ module.exports = function (grunt) {
                 stderr: true
             },
             server: { /* Подзадача */
-                command: 'java -cp L1.2-1.0-jar-with-dependencies.jar main.Main 8080'
+                command: 'java -cp epicgame.jar main.Main 8080'
             /* запуск сервера */
             }  
         }, /* grunt-shell */
@@ -51,15 +51,70 @@ module.exports = function (grunt) {
         concurrent: {
             target: ['watch', 'shell'], /* Подзадача */
             options: {
-                logConcurrentOutput: true, /* Вывод процесса */
+                logConcurrentOutput: true /* Вывод процесса */
             }
+        },
+        sass: {
+            build: {
+                style: "compressed",
+                css: { /* Подзадача */
+                    files: [{
+                        expand: true,
+                        cwd: 'public_html/css', /* исходная директория */
+                        src: '*.scss', /* имена шаблонов */
+                        dest: 'public_html/css', /* результирующая директория */
+                        ext:  '.css'
+                    }]
+                }
+            }
+        }, /* grunt-contrib-sass */
+        requirejs: {
+            build: { /* Подзадача */
+                options: {
+                    almond: true,
+                    baseUrl: "public_html/js",
+                    mainConfigFile: "public_html/js/main.js",
+                    name: "main",
+                    optimize: "none",
+                    out: "public_html/js/build/main.js"
+                }
+            }
+        }, /* grunt-contrib-requirejs */
+        uglify: {
+            build: { /* Подзадача */
+                files: {
+                    'public_html/js/build.min.js':
+                        ['public_html/js/build.js']
+                }
+            }
+        }, /* grunt-contrib-uglify */
+        concat: {    
+            build: { /* Подзадача */
+                separator: ';\n',
+                src: [
+                    'public_html/js/lib/almond.js',
+                    'public_html/js/build/main.js'
+                ],
+                dest: 'public_html/js/build.js'
+            }    
         }
     });
+
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-fest');
-    
+    grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-requirejs');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-concat');    
 
     grunt.registerTask('default', ['concurrent']);
+    grunt.registerTask(
+        'build',
+        [
+            'fest', 'requirejs:build',
+            'concat:build', 'uglify:build', 'sass:build'
+        ]
+    );
 };

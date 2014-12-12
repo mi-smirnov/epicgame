@@ -2,14 +2,20 @@ define([
     'backbone'
 ], function (Backbone){
     var User = Backbone.Model.extend({
-        default:
-        {
-            name: '',
-            score: 0
+
+        defaults: {
+            email: "qaz@mail.ru",
+            password: ""
         },
+
         initialize: function(){
-            console.log("New user");
+            console.log('New user is created');
+
+            //this.on('change:email', function(){
+            //    alert('New email' + this.get('email'));
+            //});
         }
     });
     return User;
+
 });

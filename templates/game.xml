@@ -1,6 +1,28 @@
 <fest:template xmlns:fest="http://fest.mail.ru"
     context_name="json">
-    <div class="logoText">Tanks</div>
-    <p id="titleText">Game</p>
-    <a href="#"><div class= "menuBlock"><button class="btn js-back" type="button"><i class="icon-arrow-left"></i> Back</button></div></a>
+    <div id="title">Game</div>
+    <a href="#">
+        <button class="btn page__button_back" type="button"><i class="icon-arrow-left"></i></button>
+    </a>
+    <div>
+        <button class="btn btn-warning" id="play">Play</button>
+    </div>
+    <div id="waiter" style="display: none">
+        <p>Hello, <span id="myEmail"></span>!</p>
+        <p>Prepare yourself. Wait for enemy!</p>
+    </div>
+    <div id="gameplay" style="display: none">
+        <div id="score">
+            <p><span id="Email"></span>:<span id="myScore">0</span></p>
+            <p><span id="enemyEmail"><fest:value>json.enemyEmail</fest:value></span>: <span id="enemyScore">0</span></p>
+        </div>
+    </div>
+
+    <div id="gameOver" style="display: none">
+        <p>Game over! You are <span id="win"></span></p>
+    </div>
+    <canvas id="game__field"></canvas>
+    <img id="game__firstTank" src="img/FIRST_TANK.png"/>
+    <img id="game__secondTank" src="img/SECOND_TANK.png"/>
+    <img id="game__wall" src="img/WALL.png"/>
 </fest:template>

@@ -1,14 +1,18 @@
 <fest:template xmlns:fest="http://fest.mail.ru"
     context_name="json">
-    <div class="logoText">Tanks</div>
-    <p id="titleText">Login</p>
-        <div class= "menu">
-            <legend>Sign In</legend>
-            <form method= "POST" action="/api/v1/auth/signin" id="login">
-                <input type= "text" class="span4" placeholder="email" name="email"/>
-                <input type= "password" class="span4" placeholder="password" name="password"/>
-                <div class="logSubmit"><button type="submit" name="submit" class="btn btn-block btn-primary">Sign in</button></div>
-            </form>
-        </div>  
-    <a href="#"><button class="btn js-back" type="button"><i class="icon-arrow-left"></i> Back</button></a>
+    <div class="logo">Tanks</div>
+    <div id="title">Login</div>
+    <a href="#">
+        <button class="btn page__button_back" type="button"><i class="icon-arrow-left"></i></button>
+    </a>
+
+    <div class= "menu">
+        <legend>Sign In</legend>
+        <form method="POST" action="/api/v1/auth/signin">
+            <input type= "text" class="form__input_login-email" placeholder="email" name="email"/>
+            <input type= "password" class="form__input_login-password" placeholder="password" name="password"/>
+            <button type="submit" class="btn btn-block btn-warning form__button_submit-login" disabled="true">Sign in</button>
+        </form>
+        <div class="alert alert-danger menu__alert"></div>
+    </div>
 </fest:template>
